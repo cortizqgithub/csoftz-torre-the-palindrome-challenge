@@ -1,17 +1,15 @@
 = csoftz-torre-the-palindrome-challenge-lib :: CSoftZ Torre Palindrome Challenge
 
-V1.0.0-Apr.25/2017
-
 The delivery of this project is a library in JAR format deployed to local _maven_ registry.
 
 Here you will find all the helper and support classes. It actually contains the solution to the problem at hand
 which is found in class _com.csoftz.torre.palindrome.lib.utils.PalindromeManager_ in the _evaluatePalindromeInRange_
 
-== docs 
+To build and install to local maven repository use the following command.
 
-This folder contains the self-contained documentation in Asciidoctor.
+$ mvn clean package install
 
-== app-code
+This is the first step as this library is used by other projects via maven dependency.
 
-=== back-end
-
+This project makes a test suite.
+See test folder.

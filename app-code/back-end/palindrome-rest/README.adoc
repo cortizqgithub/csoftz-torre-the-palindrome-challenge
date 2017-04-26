@@ -1,7 +1,44 @@
-= csoftz-torre-the-palindrome-challenge-lib :: CSoftZ Torre Palindrome Challenge
+= csoftz-torre-the-palindrome-challenge-rest :: CSoftZ Torre Palindrome Challenge
 
-To build and install to local maven repository use the following command.
+This is a _Spring Boot V1.5.3_ application to use create the REST API and an HTML page.
 
-$ mvn clean package install
+Compile, deploy and execute executing the following commands.
 
-This is the first step as this library is used by other projects via maven dependency.
+$ mvn clean package 
+
+The delivery JAR is stored in the TARGET directory with that you can execute the application
+by typing the following command.
+
+$ java -jar csoftz-torre-palindrome-rest-1.0.1-RELEASE.jar (version number may change, here it is v1.0.1).
+
+After the apolication load, open an HTTP client like _curl_ or _postman_ to test end points.
+Also you can open a web browser to see content.
+
+Open the following urls.
+
+htt://localhost:8092/home to test the application is responding, it will present an HTML with a welcome
+screen and a description for end points.
+
+The end points are:
+
+http://localhost:8092/api/v1/palindrome/numbers/range/{start}/{end}
+
+here replace {start} with an initial number in range from 1 to 1000000
+and replace {end} with the final number in range with a value from 1 to 1000000.
+
+[NOTE]
+====
+If x > y the result is an empty list.
+
+If x or y parameters are not valid integers then an HTTP 400 Bad request is returned to client, indicating
+that no valid parameters are given.
+====
+
+The other available end point is:
+
+http://localhost:8092/api/v1/palindrome/numbers/range
+
+It evaluates implicitely the range 1 to 1000000.
+
+The end points responds a JSON object indicating the parameters used, the palindromes found,
+the number of palindromes found and the algorithm complexity.

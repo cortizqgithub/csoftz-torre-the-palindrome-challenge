@@ -51,3 +51,5 @@ N*O(1)=O(N) thus here the worst-case time is O(n) which makes the method O(n) at
 Now it is said that O(n) represents a linear behaviour this means that for large enough input sizes the running 
 time increases linearly with the size of the input.
 
+NOTE: If x > y then O(1).
+

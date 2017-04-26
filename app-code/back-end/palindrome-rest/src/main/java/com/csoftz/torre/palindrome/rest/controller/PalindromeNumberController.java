@@ -3,8 +3,8 @@
 /* Description:   REST API to evaluate palindrome numbers                     */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Apr.25/2017                                                 */
-/* Last Modified: Apr.25/2017                                                 */
-/* Version:       1.1                                                         */
+/* Last Modified: Apr.26/2017                                                 */
+/* Version:       1.2                                                         */
 /* Copyright (c), 2017 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -33,7 +33,7 @@ import java.util.List;
  * 1 <= y <= 1000000
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Apr.25/2017
+ * @version 1.2, Apr.26/2017
  * @since 1.8 (JDK), Apr.25/2017
  */
 @RestController
@@ -56,7 +56,8 @@ public class PalindromeNumberController {
     /**
      * Retrieves all palindrome numbers between 1 and 1 million.
      *
-     * @return A JSON object with result.
+     * @return An object representing the desired output information for JSON serialization. The named object is of
+     * type PalindromeValueContainer.
      */
     @GetMapping("/range")
     public PalindromeValueContainer range() {
@@ -70,10 +71,21 @@ public class PalindromeNumberController {
         List<PalindromeInfo> infoList = palindromeNumberService.evaluateInRange(x, y);
         palindromeValueContainer.setPalindromes(infoList);
         palindromeValueContainer.setNumOfPalindromes(infoList.size());
-        palindromeValueContainer.setComplexity("O(" + y + ")");
+
+        Integer complexityTimes = y - x + 1;
+        palindromeValueContainer.setComplexity("O(n)=O(y-x) = O(" + complexityTimes + ")");
         return palindromeValueContainer;
     }
 
+    /**
+     * Retrieves all palindrome numbers from x to y. If x = y then it evaluates to one value.
+     * Here x<=y and 1<=x<=1000000 and 1<=y<=1000000.
+     *
+     * @param start Gives the initial value to evaluate.
+     * @param end   Gives the final value to evaluate.
+     * @return An object representing the desired output information for JSON serialization. The named object is of
+     * type PalindromeValueContainer.
+     */
     @GetMapping("/range/{start}/{end}")
     public ResponseEntity<PalindromeValueContainer> range(@PathVariable String start, @PathVariable String end) {
         Integer x, y;
@@ -99,7 +111,12 @@ public class PalindromeNumberController {
         List<PalindromeInfo> infoList = palindromeNumberService.evaluateInRange(x, y);
         palindromeValueContainer.setPalindromes(infoList);
         palindromeValueContainer.setNumOfPalindromes(infoList.size());
-        palindromeValueContainer.setComplexity("O(" + y + ")");
+
+        Integer complexityTimes = 1;
+        if (x <= y) {
+            complexityTimes = y - x + 1;
+        }
+        palindromeValueContainer.setComplexity("O(n)=O(y-x) = O(" + complexityTimes + ")");
         return new ResponseEntity<>(palindromeValueContainer, HttpStatus.CREATED);
     }
 }

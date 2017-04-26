@@ -29,6 +29,9 @@ The java code contained to implement the sollution for the Palindrome Challenge.
 * *palindrome-lib* It is a _Maven_ project to include helper and support classes, basically the challenge is implemented
 herein.
 * *palindrome-rest* It is a _Maven_ project which allows you to see a REST Api interface to the Palindrome Number generator.
+It uses _Spring Boot V1.5.3_ to build the app.
 
 NOTE: Follow instructions to as how to compile and deploy in each folder's README.adoc file.
+
+Most of the tests are contained in the _palindrome-lib_ project.
 
