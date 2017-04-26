@@ -16,6 +16,8 @@ package com.csoftz.torre.palindrome.rest.controller;
 import com.csoftz.torre.palindrome.lib.domain.PalindromeInfo;
 import com.csoftz.torre.palindrome.lib.domain.PalindromeValueContainer;
 import com.csoftz.torre.palindrome.rest.service.interfaces.IPalindromeNumberService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,6 +55,7 @@ public class PalindromeNumberController {
 
     /**
      * Retrieves all palindrome numbers between 1 and 1 million.
+     *
      * @return A JSON object with result.
      */
     @GetMapping("/range")
@@ -71,9 +74,22 @@ public class PalindromeNumberController {
     }
 
     @GetMapping("/range/{start}/{end}")
-    public PalindromeValueContainer range(@PathVariable String start, @PathVariable String end) {
-        Integer x = Integer.parseInt(start);
-        Integer y = Integer.parseInt(end);
+    public ResponseEntity<PalindromeValueContainer> range(@PathVariable String start, @PathVariable String end) {
+        Integer x, y;
+        boolean validInt;
+
+        validInt = true;
+        x = y = 0;
+        try {
+            x = Integer.parseInt(start);
+            y = Integer.parseInt(end);
+        } catch (Exception e) {
+            validInt = false;
+        }
+
+        if (!validInt) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
         PalindromeValueContainer palindromeValueContainer = new PalindromeValueContainer();
         palindromeValueContainer.setX(x);
@@ -82,6 +98,6 @@ public class PalindromeNumberController {
         List<PalindromeInfo> infoList = palindromeNumberService.evaluateInRange(x, y);
         palindromeValueContainer.setPalindromes(infoList);
         palindromeValueContainer.setNumOfPalindromes(infoList.size());
-        return palindromeValueContainer;
+        return new ResponseEntity<>(palindromeValueContainer, HttpStatus.CREATED);
     }
 }
