@@ -1,14 +1,34 @@
 = csoftz-torre-the-palindrome-challenge :: CSoftZ Torre Palindrome Challenge
 
-V1.0.0-Apr.25/2017
+V1.0.1-Apr.26/2017
 
+This repository implements the solution for the Palindrome Number Challenge.
 
+A palindrome is a string that is read the same forwards as it is backwards, for example "mom" or "eye". 
+
+Please create a program that completes the following:
+* Find the palindromes between 1 and 1 million that are also palindromes in its binary form. E.g 585~10~ = 1001001001~2~  and print how many of those were found
+* Print the number of cycles needed to find the answer. A cycle is as defined as every time you execute the same line of code within a routine of your program.  
+* Explain what is the computational complexity of your algorithm.
+* Create a REST api where you expose a method to find the palindromes between x and y being the parameters and that returns the answer to the 3 above items in JSON format. 
+* Upload your project to GitHub and share with us the origin of your repository.
+
+The construction of the solution is stored in the *_app_code_* folder using the Java Platform. Uses the Java 8 version and
+_Maven_ for artifact generation. _Spring Boot 1.5.3_ is used to build the REST part of the solution.
 
 == docs 
 
-This folder contains the self-contained documentation in Asciidoctor.
+Contains other documentation and explanations such as the computational complexity of the algorithm.
+Read file _big-o-complexity-analysis.adoc_.
 
 == app-code
 
-=== back-end
+The java code contained to implement the sollution for the Palindrome Challenge. 
+
+* *palindrome-console:* It is a _Maven_ project which allows you to see a terminal-like program in action.
+* *palindrome-lib* It is a _Maven_ project to include helper and support classes, basically the challenge is implemented
+herein.
+* *palindrome-rest* It is a _Maven_ project which allows you to see a REST Api interface to the Palindrome Number generator.
+
+NOTE: Follow instructions to as how to compile and deploy in each folder's README.adoc file.
 

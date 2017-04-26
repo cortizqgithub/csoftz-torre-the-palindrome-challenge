@@ -5,7 +5,7 @@
 
     <groupId>com.csoftz.torre.palindrome.rest</groupId>
     <artifactId>csoftz-torre-palindrome-rest</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.1-RELEASE</version>
     <packaging>jar</packaging>
 
     <name>csoftz-torre-the-palindrome-challenge</name>

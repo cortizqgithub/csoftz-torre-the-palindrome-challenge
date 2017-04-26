@@ -1,0 +1,53 @@
+= csoftz-torre-the-palindrome-challenge :: CSoftZ Torre Palindrome Challenge
+
+By definition in computer science, the analysis of algorithms is the determination of the amount of time, 
+storage and/or other resources necessary to execute them. (https://en.wikipedia.org/wiki/Analysis_of_algorithms).
+
+The algorithm to implement the solution to the Palindrome Challenge is found in class 
+class _com.csoftz.torre.palindrome.lib.utils.PalindromeManager_ in the _evaluatePalindromeInRange_ in the 
+_app_code/back-end/palindrome-lib_
+
+[source,java]
+----
+public List<PalindromeInfo> evaluatePalindromeInRange(Integer x, Integer y) {
+        List<PalindromeInfo> palindromeInfoList = new ArrayList<PalindromeInfo>();
+
+        boolean rangeStart = (x >= 1 && x <= 1000000);
+        boolean rangeEnd = (x >= 1 && y <= 1000000);
+        if (rangeStart && rangeEnd) {
+            while (x <= y) {
+                if (evaluateInfoPalindrome(x)) {
+                    palindromeInfoList.add(new PalindromeInfo(Integer.toString(x), Integer.toBinaryString(x)));
+                }
+                x++;
+            }
+        }
+        return palindromeInfoList;
+    }
+----
+
+Let's evaluate each line:
+
+[source, java]
+----
+        List<PalindromeInfo> palindromeInfoList = new ArrayList<PalindromeInfo>(); --> it is O(1)
+
+        boolean rangeStart = (x >= 1 && x <= 1000000); --> it is O(1)
+        boolean rangeEnd = (x >= 1 && y <= 1000000); --> it is O(1)
+        if (rangeStart && rangeEnd) { --> it is O(1)
+            while (x <= y) { --> it is O(n) because it executes n times at most.
+                if (evaluateInfoPalindrome(x)) { --> it is O(1)
+                    palindromeInfoList.add(new PalindromeInfo(Integer.toString(x), Integer.toBinaryString(x))); --> it is O(1)
+                }
+                x++; --> it is O(1)
+            }
+        }
+        return palindromeInfoList;
+---
+
+In the loop part it takes time to execute from x to y at most which is y-x times, thus we say here that it takes N=y-x, that is why it takes
+N*O(1)=O(N) thus here the worst-case time is O(n) which makes the method O(n) at all.
+
+Now it is said that O(n) represents a linear behaviour this means that for large enough input sizes the running 
+time increases linearly with the size of the input.
+

@@ -1,14 +1,7 @@
-= csoftz-torre-the-palindrome-challenge :: CSoftZ Torre Palindrome Challenge
+= csoftz-torre-the-palindrome-challenge-lib :: CSoftZ Torre Palindrome Challenge
 
-V1.0.0-Apr.25/2017
+To build and install to local maven repository use the following command.
 
+$ mvn clean package install
 
-
-== docs 
-
-This folder contains the self-contained documentation in Asciidoctor.
-
-== app-code
-
-=== back-end
-
+This is the first step as this library is used by other projects via maven dependency.
