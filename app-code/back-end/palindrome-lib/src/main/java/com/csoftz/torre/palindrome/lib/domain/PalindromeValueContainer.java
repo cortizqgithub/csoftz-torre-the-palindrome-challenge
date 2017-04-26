@@ -36,12 +36,58 @@ public class PalindromeValueContainer {
     private Integer y;
     private List<PalindromeInfo> palindromes;
     private Integer numOfPalindromes;
+    private String complexity;
 
     public PalindromeValueContainer() {
         this.x = 0;
         this.y = 0;
         this.palindromes = new ArrayList<PalindromeInfo>();
         this.numOfPalindromes = 0;
+        this.complexity = "";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PalindromeValueContainer that = (PalindromeValueContainer) o;
+
+        if (!x.equals(that.x)) return false;
+        if (!y.equals(that.y)) return false;
+        if (!palindromes.equals(that.palindromes)) return false;
+        if (!numOfPalindromes.equals(that.numOfPalindromes)) return false;
+        return complexity.equals(that.complexity);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = x.hashCode();
+        result = 31 * result + y.hashCode();
+        result = 31 * result + palindromes.hashCode();
+        result = 31 * result + numOfPalindromes.hashCode();
+        result = 31 * result + complexity.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "PalindromeValueContainer{" +
+                "x=" + x +
+                ", y=" + y +
+                ", palindromes=" + palindromes +
+                ", numOfPalindromes=" + numOfPalindromes +
+                ", complexity='" + complexity + '\'' +
+                '}';
+    }
+
+    public String getComplexity() {
+
+        return complexity;
+    }
+
+    public void setComplexity(String complexity) {
+        this.complexity = complexity;
     }
 
     public Integer getX() {
@@ -66,38 +112,6 @@ public class PalindromeValueContainer {
 
     public void setPalindromes(List<PalindromeInfo> palindromes) {
         this.palindromes = palindromes;
-    }
-
-    @Override
-    public String toString() {
-        return "PalindromeValueContainer{" +
-                "x=" + x +
-                ", y=" + y +
-                ", palindromes=" + palindromes +
-                ", numOfPalindromes=" + numOfPalindromes +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        PalindromeValueContainer that = (PalindromeValueContainer) o;
-
-        if (!x.equals(that.x)) return false;
-        if (!y.equals(that.y)) return false;
-        if (!palindromes.equals(that.palindromes)) return false;
-        return numOfPalindromes.equals(that.numOfPalindromes);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = x.hashCode();
-        result = 31 * result + y.hashCode();
-        result = 31 * result + palindromes.hashCode();
-        result = 31 * result + numOfPalindromes.hashCode();
-        return result;
     }
 
     public Integer getNumOfPalindromes() {

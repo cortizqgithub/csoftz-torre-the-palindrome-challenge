@@ -70,6 +70,7 @@ public class PalindromeNumberController {
         List<PalindromeInfo> infoList = palindromeNumberService.evaluateInRange(x, y);
         palindromeValueContainer.setPalindromes(infoList);
         palindromeValueContainer.setNumOfPalindromes(infoList.size());
+        palindromeValueContainer.setComplexity("O(" + y + ")");
         return palindromeValueContainer;
     }
 
@@ -98,6 +99,7 @@ public class PalindromeNumberController {
         List<PalindromeInfo> infoList = palindromeNumberService.evaluateInRange(x, y);
         palindromeValueContainer.setPalindromes(infoList);
         palindromeValueContainer.setNumOfPalindromes(infoList.size());
+        palindromeValueContainer.setComplexity("O(" + y + ")");
         return new ResponseEntity<>(palindromeValueContainer, HttpStatus.CREATED);
     }
 }
