@@ -32,6 +32,11 @@ import java.util.List;
 @SpringBootApplication
 public class PalindromeConsole implements CommandLineRunner {
 
+    /**
+     * Evaluates if there are palindrome numbers in range x y.
+     * @param x start of range to evaluate.
+     * @param y end of range to evaluate.
+     */
     public  void processInRange(Integer x, Integer y) {
         PalindromeManager palindromeManager = new PalindromeManager();
 
@@ -118,16 +123,5 @@ public class PalindromeConsole implements CommandLineRunner {
             // Now all validation rules pass, process.
             processInRange(x,y);
         }
-
-
-    }
-
-    /**
-     * Application entry point.
-     * @param args Command line arguments.
-     * @throws Exception Catch exceptions.
-     */
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(PalindromeConsole.class, args);
     }
 }
