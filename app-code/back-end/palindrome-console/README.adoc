@@ -1,14 +1,31 @@
-= csoftz-torre-the-palindrome-challenge :: CSoftZ Torre Palindrome Challenge
+= csoftz-torre-the-palindrome-challenge-console :: CSoftZ Torre Palindrome Challenge
 
-V1.0.0-Apr.25/2017
+This is the console application to gather palindrome numbers information.
 
+To compile execute the following command
 
+[source, terminal]
+----
+$ mvn clean package
+----
 
-== docs 
+The executable is found in this project's target folder.
 
-This folder contains the self-contained documentation in Asciidoctor.
+Now that it is compiled you can execute the application by typing the following
+command.
 
-== app-code
+[source, terminal]
+----
+$ java -jar csoftz-torre-palindrome-console-1.0.0-RELEASE.jar default
+----
 
-=== back-end
+This gets the default palindrome numbers between 1 and 1000000.
 
+[source, terminal]
+----
+$ java -jar csoftz-torre-palindrome-console-1.0.0-RELEASE.jar 2 100
+----
+
+This gets the palindrome numbers between 2 100
+
+The application validates input parameters accordingly.

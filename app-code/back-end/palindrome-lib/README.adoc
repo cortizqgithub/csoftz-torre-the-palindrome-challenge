@@ -7,7 +7,10 @@ which is found in class _com.csoftz.torre.palindrome.lib.utils.PalindromeManager
 
 To build and install to local maven repository use the following command.
 
+[source, terminal]
+----
 $ mvn clean package install
+----
 
 This is the first step as this library is used by other projects via maven dependency.
 
