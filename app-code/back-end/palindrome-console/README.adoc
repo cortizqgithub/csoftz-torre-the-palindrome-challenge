@@ -16,6 +16,7 @@ to the source code therein, you must again execute those instructions. As a refr
 [source, terminal]
 ----
 $ cd ..
+$ cd palindrome-lib
 $ mvn clean package
 ----
 
