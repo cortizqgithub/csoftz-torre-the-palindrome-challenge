@@ -4,6 +4,14 @@ This is the console application to gather palindrome numbers information.
 
 To compile execute the following command
 
+[NOTE]
+====
+In order to execute this console application, one dependency must be compiled
+and installed.
+
+The dependency is the project 
+====
+
 [source, terminal]
 ----
 $ mvn clean package
