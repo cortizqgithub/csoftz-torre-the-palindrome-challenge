@@ -15,7 +15,7 @@ to the source code therein, you must again execute those instructions. As a refr
 ----
 $ cd ..
 $ cd palindrome-lib
-$ mvn clean package
+$ mvn clean package install
 ----
 
 Besides you must have _maven_ propery installed and configured.
