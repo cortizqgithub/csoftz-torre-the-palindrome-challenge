@@ -23,6 +23,12 @@ Read file _big-o-complexity-analysis.adoc_.
 
 == app-code
 
+[NOTE]
+====
+To execute the applications you must have the Java runtime (JDK or JRE), the Maven build system, or if you
+prefer use a Java IDE such as Eclipse or IntelliJ that supports the Maven build system.
+====
+
 The java code contained to implement the sollution for the Palindrome Challenge. 
 
 * *palindrome-console:* It is a _Maven_ project which allows you to see a terminal-like program in action.
