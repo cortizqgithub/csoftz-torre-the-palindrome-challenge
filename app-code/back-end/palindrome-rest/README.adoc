@@ -2,6 +2,23 @@
 
 This is a _Spring Boot V1.5.3_ application to use create the REST API and an HTML page.
 
+[NOTE]
+====
+In order to execute this console application, one dependency must be compiled
+and installed.
+
+The dependency is the project contained in this sibling folder named _palindrome-lib, 
+thus you must go there and execute the README instructions. Besides if you make any modifications
+to the source code therein, you must again execute those instructions. As a refresher, this is the command.
+
+[source, terminal]
+----
+$ cd ..
+$ mvn clean package
+----
+
+====
+
 Compile, deploy and execute executing the following commands.
 
 $ mvn clean package 

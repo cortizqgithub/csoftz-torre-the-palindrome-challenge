@@ -9,7 +9,16 @@ To compile execute the following command
 In order to execute this console application, one dependency must be compiled
 and installed.
 
-The dependency is the project 
+The dependency is the project contained in this sibling folder named _palindrome-lib, 
+thus you must go there and execute the README instructions. Besides if you make any modifications
+to the source code therein, you must again execute those instructions. As a refresher, this is the command.
+
+[source, terminal]
+----
+$ cd ..
+$ mvn clean package
+----
+
 ====
 
 [source, terminal]
