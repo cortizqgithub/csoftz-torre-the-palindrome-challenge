@@ -31,7 +31,12 @@ herein.
 * *palindrome-rest* It is a _Maven_ project which allows you to see a REST Api interface to the Palindrome Number generator.
 It uses _Spring Boot V1.5.3_ to build the app.
 
-NOTE: Follow instructions to as how to compile and deploy in each folder's README.adoc file.
+[NOTE]
+====
+Follow instructions to as how to compile and deploy in each folder's README.adoc file.
+
+As all of the projects use _maven_, it is up to you to have it properly installed.
+====
 
 Most of the tests are contained in the _palindrome-lib_ project.
 

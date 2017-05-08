@@ -20,6 +20,7 @@ $ cd palindrome-lib
 $ mvn clean package
 ----
 
+Besides you must have _maven_ propery installed and configured.
 ====
 
 [source, terminal]

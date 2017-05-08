@@ -18,6 +18,7 @@ $ cd palindrome-lib
 $ mvn clean package
 ----
 
+Besides you must have _maven_ propery installed and configured.
 ====
 
 Compile, deploy and execute executing the following commands.

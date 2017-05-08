@@ -16,3 +16,8 @@ This is the first step as this library is used by other projects via maven depen
 
 This project makes a test suite.
 See test folder.
+
+[NOTE]
+====
+Besides you must have _maven_ propery installed and configured.
+====
