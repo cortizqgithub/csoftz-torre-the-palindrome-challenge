@@ -47,7 +47,7 @@ This gets the default palindrome numbers between 1 and 1000000.
 [source, terminal]
 ----
 $ cd target
-$ java -jar csoftz-torre-palindrome-console-1.0.0-RELEASE.jar 2 100
+$ java -jar csoftz-torre-palindrome-console-1.0.2-RELEASE.jar 2 100
 ----
 
 This gets the palindrome numbers between 2 100
