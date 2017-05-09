@@ -28,20 +28,25 @@ Besides you must have _maven_ propery installed and configured.
 $ mvn clean package
 ----
 
+[NOTE]
+====
 The executable is found in this project's target folder.
+====
 
 Now that it is compiled you can execute the application by typing the following
 command.
 
 [source, terminal]
 ----
-$ java -jar csoftz-torre-palindrome-console-1.0.0-RELEASE.jar default
+$ cd target
+$ java -jar csoftz-torre-palindrome-console-1.0.2-RELEASE.jar default
 ----
 
 This gets the default palindrome numbers between 1 and 1000000.
 
 [source, terminal]
 ----
+$ cd target
 $ java -jar csoftz-torre-palindrome-console-1.0.0-RELEASE.jar 2 100
 ----
 

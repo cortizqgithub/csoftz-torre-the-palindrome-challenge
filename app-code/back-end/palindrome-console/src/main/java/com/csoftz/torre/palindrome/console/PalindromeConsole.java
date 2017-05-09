@@ -124,4 +124,11 @@ public class PalindromeConsole implements CommandLineRunner {
             processInRange(x,y);
         }
     }
+
+    /** 
+     * Application entry point.
+     */
+    public static void main(String[] args) {
+		SpringApplication.run(PalindromeConsole.class, args);
+	}
 }

@@ -6,7 +6,7 @@
 
     <groupId>com.csoftz.torre.palindrome</groupId>
     <artifactId>csoftz-torre-palindrome-console</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.2-RELEASE</version>
     <description>Console App for Palindrome Number Challenge</description>
 
     <properties>

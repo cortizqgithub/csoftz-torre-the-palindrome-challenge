@@ -21,14 +21,27 @@ $ mvn clean package install
 Besides you must have _maven_ propery installed and configured.
 ====
 
+[NOTE]
+====
+The executable is found in this project's target folder.
+====
+
 Compile, deploy and execute executing the following commands.
 
-$ mvn clean package 
+[source, terminal]
+----
+$ cd target
+$ mvn clean package
+----
 
 The delivery JAR is stored in the TARGET directory with that you can execute the application
 by typing the following command.
 
+[source, terminal]
+----
+$ cd target
 $ java -jar csoftz-torre-palindrome-rest-1.0.1-RELEASE.jar (version number may change, here it is v1.0.1).
+----
 
 After the apolication load, open an HTTP client like _curl_ or _postman_ to test end points.
 Also you can open a web browser to see content.
