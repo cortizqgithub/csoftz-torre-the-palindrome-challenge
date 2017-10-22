@@ -3,7 +3,7 @@
 /* Description:   A command line program to evaluate palindrome numbers       */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Apr.26/2017                                                 */
-/* Last Modified: Apr.26/2017                                                 */
+/* Last Modified: Oct.22/2017                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2017 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -26,18 +26,26 @@ import java.util.List;
  * A command line program to evaluate palindrome numbers
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Apr.26/2017
+ * @version 1.1, Oct.22/2017
  * @since 1.8 (JDK), Apr.26/2017
  */
 @SpringBootApplication
 public class PalindromeConsole implements CommandLineRunner {
 
     /**
+     * Application entry point.
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(PalindromeConsole.class, args);
+    }
+
+    /**
      * Evaluates if there are palindrome numbers in range x y.
+     *
      * @param x start of range to evaluate.
      * @param y end of range to evaluate.
      */
-    public  void processInRange(Integer x, Integer y) {
+    public void processInRange(Integer x, Integer y) {
         PalindromeManager palindromeManager = new PalindromeManager();
 
         PalindromeValueContainer palindromeValueContainer = new PalindromeValueContainer();
@@ -51,6 +59,40 @@ public class PalindromeConsole implements CommandLineRunner {
         Integer complexityTimes = y - x + 1;
         palindromeValueContainer.setComplexity("O(n)=O(y-x) = O(" + complexityTimes + ")");
 
+        System.out.println("Use non-lambda palindrome execution.");
+        System.out.println("Parameter x used: " + palindromeValueContainer.getX());
+        System.out.println("Parameter y used: " + palindromeValueContainer.getY());
+        System.out.println("Number of Palindromes found: " + palindromeValueContainer.getNumOfPalindromes());
+        System.out.println("Complexity: " + palindromeValueContainer.getComplexity());
+        System.out.println("List of palindrome numbers found, follows:");
+
+        infoList.forEach(info -> System.out.println(info.getNumber() + " | " + info.getNumberAsBinary()));
+    }
+
+    /**
+     * Evaluates if there are palindrome numbers in range x y.
+     * <p>
+     * <b>NOTE:</b> Uses the lambda version to process palindromes.
+     * </p>
+     *
+     * @param x start of range to evaluate.
+     * @param y end of range to evaluate.
+     */
+    public void processInRangeLambda(Integer x, Integer y) {
+        PalindromeManager palindromeManager = new PalindromeManager();
+
+        PalindromeValueContainer palindromeValueContainer = new PalindromeValueContainer();
+        palindromeValueContainer.setX(x);
+        palindromeValueContainer.setY(y);
+
+        List<PalindromeInfo> infoList = palindromeManager.evaluatePalindromInRangeWithLambda(x, y);
+        palindromeValueContainer.setPalindromes(infoList);
+        palindromeValueContainer.setNumOfPalindromes(infoList.size());
+
+        Integer complexityTimes = y - x + 1;
+        palindromeValueContainer.setComplexity("O(n)=O(y-x) = O(" + complexityTimes + ")");
+
+        System.out.println("Use lambda palindrome execution.");
         System.out.println("Parameter x used: " + palindromeValueContainer.getX());
         System.out.println("Parameter y used: " + palindromeValueContainer.getY());
         System.out.println("Number of Palindromes found: " + palindromeValueContainer.getNumOfPalindromes());
@@ -70,7 +112,7 @@ public class PalindromeConsole implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
-        if (args.length == 0){
+        if (args.length == 0) {
             System.out.println();
             System.out.println("Usage: java -jar csoftz-torre-palindrome-console-1.0.0-RELEASE.jar [default]|[start end]");
             System.out.println("Where [default] uses the range from 1 to 1000000.");
@@ -84,8 +126,10 @@ public class PalindromeConsole implements CommandLineRunner {
             System.out.println();
             return;
         }
-        if (args.length == 1 && args[0].equals("default")){
+        if (args.length == 1 && args[0].equals("default")) {
             processInRange(1, 1000000);
+            System.out.println("==================================================================");
+            processInRangeLambda(1, 1000000);
         }
         if (args.length == 2) {
             boolean validInt = true;
@@ -94,7 +138,7 @@ public class PalindromeConsole implements CommandLineRunner {
             try {
                 x = Integer.parseInt(args[0]);
                 y = Integer.parseInt(args[1]);
-            } catch (Exception e){
+            } catch (Exception e) {
                 validInt = false;
             }
             if (!validInt) {
@@ -121,14 +165,9 @@ public class PalindromeConsole implements CommandLineRunner {
             }
 
             // Now all validation rules pass, process.
-            processInRange(x,y);
+            processInRange(x, y);
+            System.out.println("==================================================================");
+            processInRangeLambda(x, y);
         }
     }
-
-    /** 
-     * Application entry point.
-     */
-    public static void main(String[] args) {
-		SpringApplication.run(PalindromeConsole.class, args);
-	}
 }

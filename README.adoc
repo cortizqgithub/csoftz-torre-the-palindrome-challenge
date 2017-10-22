@@ -1,6 +1,6 @@
 = csoftz-torre-the-palindrome-challenge :: CSoftZ Torre Palindrome Challenge
 
-V1.0.2-May.09/2017
+V1.0.3-Oct.22/2017
 
 This repository implements the solution for the Palindrome Number Challenge.
 

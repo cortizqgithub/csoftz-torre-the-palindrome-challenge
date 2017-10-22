@@ -40,7 +40,7 @@ by typing the following command.
 [source, terminal]
 ----
 $ cd target
-$ java -jar csoftz-torre-palindrome-rest-1.0.1-RELEASE.jar (version number may change, here it is v1.0.1).
+$ java -jar csoftz-torre-palindrome-rest-1.0.2-RELEASE.jar (version number may change, here it is v1.0.2).
 ----
 
 After the apolication load, open an HTTP client like _curl_ or _postman_ to test end points.
@@ -54,6 +54,7 @@ screen and a description for end points.
 The end points are:
 
 http://localhost:8092/api/v1/palindrome/numbers/range/{start}/{end}
+http://localhost:8092/api/v1/palindrome/numbers/range/lambda/{start}/{end}
 
 here replace {start} with an initial number in range from 1 to 1000000
 and replace {end} with the final number in range with a value from 1 to 1000000.
@@ -64,13 +65,23 @@ If x > y the result is an empty list.
 
 If x or y parameters are not valid integers then an HTTP 400 Bad request is returned to client, indicating
 that no valid parameters are given.
+
+Also notice that when you use the 'http://localhost:8092/api/v1/palindrome/numbers/range/lambda/{start}/{end}'
+end point, the system is computing internally by using a java lambda expression version.
 ====
 
 The other available end point is:
 
 http://localhost:8092/api/v1/palindrome/numbers/range
+http://localhost:8092/api/v1/palindrome/numbers/range/lambda
 
 It evaluates implicitely the range 1 to 1000000.
 
 The end points responds a JSON object indicating the parameters used, the palindromes found,
 the number of palindromes found and the algorithm complexity.
+
+[NOTE]
+====
+notice that when you use the 'http://localhost:8092/api/v1/palindrome/numbers/range/lambda'
+end point, the system is computing internally by using a java lambda expression version.
+====

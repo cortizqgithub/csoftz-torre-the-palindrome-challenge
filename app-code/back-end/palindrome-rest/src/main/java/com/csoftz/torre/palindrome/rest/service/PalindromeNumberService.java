@@ -3,8 +3,8 @@
 /* Description:   Implements a service to evaluate palindrome numbers         */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Apr.25/2017                                                 */
-/* Last Modified: Apr.25/2017                                                 */
-/* Version:       1.1                                                         */
+/* Last Modified: Oct.22/2017                                                 */
+/* Version:       1.2                                                         */
 /* Copyright (c), 2017 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -24,7 +24,7 @@ import java.util.List;
  * Implements a service to evaluate palindrome numbers
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Apr.25/2017
+ * @version 1.2, Oct.22/2017
  * @since 1.8 (JDK), Apr.25/2017
  */
 @Service
@@ -42,19 +42,18 @@ public class PalindromeNumberService implements IPalindromeNumberService {
     }
 
     /**
-     * Retrieves a list of palindrome numbers in range x and y.
-     * Given a range of numbers in (x..y) where x <= y and valid integer values.
-     * <p>
-     * 1 <= x <= 1000000
-     * 1 <= y <= 1000000
-     *
-     * @param x Range Start
-     * @param y Range End
-     * @return If x > y then an empty list is returned. If any parameter is
-     * outside range then and empty list is returned as well.
+     * @see com.csoftz.torre.palindrome.rest.service.interfaces.IPalindromeNumberService#evaluateInRange(Integer x, Integer y)
      */
     @Override
     public List<PalindromeInfo> evaluateInRange(Integer x, Integer y) {
         return palindromeManager.evaluatePalindromeInRange(x, y);
+    }
+
+    /**
+     * @see com.csoftz.torre.palindrome.rest.service.interfaces.IPalindromeNumberService#evaluateInRangeWithLambda(Integer x, Integer y)
+     */
+    @Override
+    public List<PalindromeInfo> evaluateInRangeWithLambda(Integer x, Integer y) {
+        return palindromeManager.evaluatePalindromeInRangeWithLambda(x, y);
     }
 }

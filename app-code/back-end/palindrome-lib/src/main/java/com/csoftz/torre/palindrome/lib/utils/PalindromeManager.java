@@ -3,8 +3,8 @@
 /* Description:   Utility to manipulate palindrome numbers                    */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Apr.25/2017                                                 */
-/* Last Modified: Apr.25/2017                                                 */
-/* Version:       1.1                                                         */
+/* Last Modified: Oct.22/2017                                                 */
+/* Version:       1.2                                                         */
 /* Copyright (c), 2017 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -17,15 +17,33 @@ import com.csoftz.torre.palindrome.lib.domain.PalindromeInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.IntPredicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Utility to manipulate palindrome numbers
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Apr.25/2017
+ * @version 1.2, Oct.22/2017
  * @since 1.8 (JDK), Apr.25/2017
  */
 public class PalindromeManager {
+
+    /**
+     * Used internally in evaluatePalindromInRangeWithLambda with Lambda version.
+     * @return
+     */
+    private static IntPredicate evaluatePalindrome() {
+        return i -> {
+            String numberString = Integer.toString(i);
+            String numberBinaryString = Integer.toBinaryString(i);
+            Boolean decimalNumberPalindrome = numberString.equals(new StringBuilder(numberString).reverse().toString());
+            Boolean binaryNumberPalindrome = numberBinaryString.equals(new StringBuffer(numberBinaryString).reverse().toString());
+
+            return decimalNumberPalindrome && binaryNumberPalindrome;
+        };
+    }
 
     /**
      * Given the string verifies if it is a palindrome
@@ -33,7 +51,7 @@ public class PalindromeManager {
      * @param s Data
      * @return True if palindrome
      */
-    public boolean isPalindromeString(String s) {
+    private boolean isPalindromeString(String s) {
         return s.equals(new StringBuilder(s).reverse().toString());
     }
 
@@ -46,8 +64,7 @@ public class PalindromeManager {
      * representation is palindrome.
      */
     public boolean evaluateInfoPalindrome(Integer number) {
-        return isPalindromeString(Integer.toString(number)) &&
-                isPalindromeString(Integer.toBinaryString(number));
+        return isPalindromeString(Integer.toString(number)) && isPalindromeString(Integer.toBinaryString(number));
     }
 
     /**
@@ -55,9 +72,11 @@ public class PalindromeManager {
      * The evaluation happens in the range x through y, and both x and y must be integer and x <= y.
      * <p>
      * Given a range of numbers in (x..y) where x <= y and valid integer values.
+     * </p>
      * <p>
      * 1 <= x <= 1000000
      * 1 <= y <= 1000000
+     * </p>
      *
      * @param x Range start
      * @param y Range End
@@ -78,5 +97,30 @@ public class PalindromeManager {
             }
         }
         return palindromeInfoList;
+    }
+
+    /**
+     * Returns a list of Palindrome Numbers (both deciman and binary number must be a palindrome).
+     * The evaluation happens in the range x through y, and both x and y must be integer and x <= y.
+     * <p>
+     * Given a range of numbers in (x..y) where x <= y and valid integer values.
+     * </p>
+     * <p>
+     * 1 <= x <= 1000000
+     * 1 <= y <= 1000000
+     * </p>
+     * <p>
+     * <b>NOTE:</b> The internal implementation uses java 8 lambda expersions and collection streams.
+     * </p>
+     *
+     * @param x Range start
+     * @param y Range End
+     * @return If x > y then an empty list is returned. If any parameter is
+     * outside range then and empty list is returned as well.
+     */
+    public List<PalindromeInfo> evaluatePalindromeInRangeWithLambda(Integer x, Integer y) {
+        return IntStream.rangeClosed(x, y)
+                .filter(evaluatePalindrome()).mapToObj(n -> new PalindromeInfo(Integer.toString(n), Integer.toBinaryString(n)))
+                .collect(Collectors.toList());
     }
 }
